@@ -9,15 +9,15 @@
     <input type="text" name="x" />
     <input type="text" name="y" />
     <input type="submit" value="Sum" />
-  </form>
+    <input id="sum-result" readonly />
+</form>
 
-  <div id="sum-result"></div>
 
   <script type="text/javascript">
     $('form#sum').submit(function(){
       $.get("/sum/", { x: $("[name='x']").val(), y: $("[name='y']").val() } )
         .done(function( data ) {
-          $('#sum-result').text(data);
+          $('#sum-result').val(data);
         });
       return false;
     });
