@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+
+  <form id="sum">
+    <input type="text" name="x" />
+    <input type="text" name="y" />
+    <input type="submit" value="Sum" />
+  </form>
+
+  <div id="sum-result"></div>
+
+  <script type="text/javascript">
+    $('form#sum').submit(function(){
+      $.get("/sum/", { x: $("[name='x']").val(), y: $("[name='y']").val() } )
+        .done(function( data ) {
+          $('#sum-result').text(data);
+        });
+      return false;
+    });
+  </script>
+</body>
+</html>
